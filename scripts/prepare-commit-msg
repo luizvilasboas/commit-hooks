@@ -1,0 +1,21 @@
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+
+if [ ! -s "$COMMIT_MSG_FILE" ]; then
+    exit 0
+fi
+
+INITIAL_MSG=$(cat "$COMMIT_MSG_FILE")
+
+BINARY_NAME="commit-hook"
+
+SUMMARY=$($PWD/$BINARY_NAME "$INITIAL_MSG" < /dev/tty)
+
+if [ -n "$SUMMARY" ]; then
+    echo "$SUMMARY" > "$COMMIT_MSG_FILE"
+    echo "Commit message updated." >/dev/stderr
+else
+    echo "No changes were made." >/dev/stderr
+fi
+

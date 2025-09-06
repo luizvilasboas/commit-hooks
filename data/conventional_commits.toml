@@ -1,0 +1,33 @@
+# Configuration file for the semantic commit helper.
+# Defines the available types and scopes for selection.
+
+# 'types' define the allowed change types, following the Conventional Commits specification.
+types = [
+  "feat",      # A new feature
+  "fix",       # A bug fix
+  "docs",      # Documentation only changes
+  "style",     # Changes that do not affect the meaning of the code (white-space, formatting, etc)
+  "refactor",  # A code change that neither fixes a bug nor adds a feature
+  "perf",      # A code change that improves performance
+  "test",      # Adding missing tests or correcting existing tests
+  "build",     # Changes that affect the build system or external dependencies
+  "ci",        # Changes to our CI configuration files and scripts
+  "chore",     # Other changes that don't modify src or test files
+  "revert"     # Reverts a previous commit
+]
+
+# 'scopes' define common scopes that can be affected by the change.
+# These are examples and should be adapted to your specific project.
+scopes = [
+  "api",       # Changes to the API
+  "ui",        # Changes to the user interface
+  "db",        # Changes to the database schema or migrations
+  "auth",      # Changes related to authentication or authorization
+  "config",    # Changes to configuration files
+  "deps",      # Add, remove, or update dependencies
+  "docs",      # Specific changes to documentation (if different from the 'docs' type)
+  "ci",        # Changes to the CI/CD pipeline
+  "tests",     # Changes to test files
+  "core"       # Changes to core system functionalities
+]
+
