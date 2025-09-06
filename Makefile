@@ -32,4 +32,7 @@ install: build
 	@echo "Hook and binary installed globally."
 	@echo "Please ensure '$(BINARY_DEST_DIR_GLOBAL)' is in your shell's PATH."
 
-.PHONY: all build run clean install install-global help
+test:
+	go test -v ./...
+
+.PHONY: all build run clean install test

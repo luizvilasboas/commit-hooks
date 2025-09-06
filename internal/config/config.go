@@ -3,7 +3,6 @@ package config
 import (
 	"log"
 	"os"
-	"os/user"
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
@@ -29,15 +28,16 @@ func Load() Config {
 		log.Printf("Error decoding local config file %s: %v", localPath, err)
 	}
 
-	usr, err := user.Current()
+	homeDir, err := os.UserHomeDir()
 	if err == nil {
-		homePath := filepath.Join(usr.HomeDir, ".commit_hooks", "conventional_commits.toml")
+		homePath := filepath.Join(homeDir, ".commit_hooks", "conventional_commits.toml")
 		if _, err := os.Stat(homePath); err == nil {
 			var config Config
-			if _, err := toml.DecodeFile(homePath, &config); err == nil {
+			if _, decodeErr := toml.DecodeFile(homePath, &config); decodeErr == nil {
 				return config
+			} else {
+				log.Printf("Error decoding global config file %s: %v", homePath, decodeErr)
 			}
-			log.Printf("Error decoding global config file %s: %v", homePath, err)
 		}
 	}
 
