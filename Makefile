@@ -1,9 +1,10 @@
 BINARY_NAME=commit-hook
 HOOK_NAME=prepare-commit-msg
 HOOK_SOURCE_DIR=scripts
-HOOK_DEST_DIR_LOCAL=.git/hooks
 HOOK_DEST_DIR_GLOBAL=$(HOME)/.git-hooks-global
 BINARY_DEST_DIR_GLOBAL?=$(HOME)/.local/bin
+BASE_CONFIG_FILE=data/conventional_commits.toml
+BASE_CONFIG_DIR=$(HOME)/.commit_hooks
 
 all: help
 
@@ -29,6 +30,8 @@ install: build
 	cp "$(HOOK_SOURCE_DIR)/$(HOOK_NAME)" "$(HOOK_DEST_DIR_GLOBAL)/$(HOOK_NAME)"
 	chmod +x "$(HOOK_DEST_DIR_GLOBAL)/$(HOOK_NAME)"
 	git config --global core.hooksPath "$(HOOK_DEST_DIR_GLOBAL)"
+	@echo "Installing base conventional_commits.toml"
+	cp $(BASE_CONFIG_FILE) $(BASE_CONFIG_DIR)
 	@echo "Hook and binary installed globally."
 	@echo "Please ensure '$(BINARY_DEST_DIR_GLOBAL)' is in your shell's PATH."
 
