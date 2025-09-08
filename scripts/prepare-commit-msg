@@ -10,7 +10,7 @@ INITIAL_MSG=$(cat "$COMMIT_MSG_FILE")
 
 BINARY_NAME="commit-hook"
 
-SUMMARY=$($PWD/$BINARY_NAME "$INITIAL_MSG" < /dev/tty)
+SUMMARY=$($BINARY_NAME "$INITIAL_MSG" < /dev/tty)
 
 if [ -n "$SUMMARY" ]; then
     echo "$SUMMARY" > "$COMMIT_MSG_FILE"
