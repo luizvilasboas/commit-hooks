@@ -39,25 +39,19 @@ Follow the steps below:
 1. **Clone the repository**
 
 ```
-
 git clone https://github.com/luizvilasboas/commit-hooks.git
-
 ```
 
 2. **Navigate to the project directory**
 
 ```
-
 cd commit-hooks
-
 ```
 
 3. **Install dependencies**
 
 ```
-
 go mod tidy
-
 ````
 
 4. **Install the Git hook**
@@ -69,7 +63,6 @@ You have two options for installation:
 
   ```
   make install
-  
   ```
 
 * **Global Installation (for all your repositories)**
@@ -77,7 +70,6 @@ You have two options for installation:
 
   ```
   make install-global
-  
   ```
 
   **Important**: Ensure the installation directory (`~/.local/bin` by default) is in your shell's `$PATH`.
@@ -94,10 +86,8 @@ The file should follow this format:
 
 ```toml
 # Example conventional\_commits.toml
-
 types = ["feat", "fix", "docs", "style", "refactor", "test", "chore"]
 scopes = ["api", "ui", "db", "auth", "deps"]
-
 ```
 
 ### Workflow
@@ -107,9 +97,7 @@ scopes = ["api", "ui", "db", "auth", "deps"]
 2. Run the commit command with a brief initial message:
 
 ```
-
 git commit -m "add user login feature"
-
 ```
 
 3. The interactive helper will launch automatically.
